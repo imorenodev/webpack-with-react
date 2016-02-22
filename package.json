@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/imorenodev/webpack-with-react/issues"
   },
-  "homepage": "https://github.com/imorenodev/webpack-with-react#readme"
+  "homepage": "https://github.com/imorenodev/webpack-with-react#readme",
+  "devDependencies": {
+    "webpack": "^2.1.0-beta.2"
+  }
 }
