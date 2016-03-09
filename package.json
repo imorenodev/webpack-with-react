@@ -1,0 +1,19 @@
+{
+  "name": "webpack-with-react",
+  "version": "1.0.0",
+  "description": "Building a Kanban App with SurviveJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imorenodev/webpack-with-react.git"
+  },
+  "author": "Ian Moreno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imorenodev/webpack-with-react/issues"
+  },
+  "homepage": "https://github.com/imorenodev/webpack-with-react#readme"
+}
