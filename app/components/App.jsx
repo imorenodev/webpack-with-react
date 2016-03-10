@@ -1,6 +1,7 @@
 import uuid from 'node-uuid';
 import React from 'react';
 import Note from './Note.jsx';
+import Notes from './Notes.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,12 +28,25 @@ export default class App extends React.Component {
     const notes = this.state.notes;
     return (
       <div className='container'>
-        <li className='list-group-item active'>Task Items List:</li>
-        <ol className='list-group'>
-          {notes.map(note =>
-          <li className='list-group-item' key={note.id}>{note.task}</li>)}
-        </ol>
+        <li className='list-group-item active'>Task Items List:
+          <button onClick={this.addNote} className='btn btn-success btn-sm float-right'>+</button>
+          <button onClick={this.removeNote} className='btn btn-danger btn-sm float-right'>-</button>
+        </li>
+        <Notes notes={notes} />
       </div>
     );
+  }
+  addNote = () => {
+    this.setState({
+      notes: this.state.notes.concat([{
+        id: uuid.v4(),
+        task: 'New Task'
+      }])
+    }, () => console.log('added a new task!'));
+  };
+  removeNote = () => {
+    this.setState({
+      notes: this.state.notes.slice(0,-1)
+    }, () => console.log('removed a task!'))
   }
 }

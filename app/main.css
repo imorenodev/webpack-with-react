@@ -10,3 +10,6 @@ ol li.list-group-item {
   list-style: decimal inside;
   display: list-item;
 }
+.float-right {
+  margin: auto auto auto 10px;
+}
