@@ -3,7 +3,7 @@ import React from 'react';
 import Note from './Note.jsx';
 import Notes from './Notes.jsx';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -50,3 +50,5 @@ export default class App extends React.Component {
     }, () => console.log('removed a task!'))
   }
 }
+
+export default App;
