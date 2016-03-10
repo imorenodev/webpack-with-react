@@ -28,11 +28,13 @@ class App extends React.Component {
     const notes = this.state.notes;
     return (
       <div className='container'>
-        <li className='list-group-item active'>Task Items List:
-          <button onClick={this.addNote} className='btn btn-success btn-sm float-right'>+</button>
-          <button onClick={this.removeNote} className='btn btn-danger btn-sm float-right'>-</button>
+        <li className='list-group-item active'>
+          <button onClick={this.addNote} className='btn btn-success btn-sm float-left'>+</button>
+          <span>Todo List</span>
         </li>
-        <Notes notes={notes} onEdit={this.editNote} />
+        <Notes notes={notes}
+               onEdit={this.editNote}
+               onDelete={this.deleteNote} />
       </div>
     );
   }
@@ -58,10 +60,16 @@ class App extends React.Component {
     });
     this.setState({notes});
   }
-  removeNote = () => {
+  deleteNote = (id, e) => {
+    // Avoid bubbling to edit
+    e.stopPropagation();
+
     this.setState({
-      notes: this.state.notes.slice(0,-1)
-    }, () => console.log('removed a task!'))
+      // filter and return any note whose id does not match
+      // id that was passed in, deleting note which matches
+      // id from the notes array
+      notes: this.state.notes.filter(note => note.id !== id)
+    }, () => console.log('deleted a task!'));
   };
 }
 

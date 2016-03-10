@@ -11,6 +11,17 @@ ol li.list-group-item {
   list-style: decimal inside;
   display: list-item;
 }
-.float-right {
-  margin: auto auto auto 10px;
+ol li.list-group-item:hover {
+  box-shadow: 0 0 1.3em 0.03em rgba(0,0,0,0.3);
+  transition: 0.6s;
+}
+ol li.list-group-item button {
+  padding: 0px 6px 0 6px !important;
+  float: right;
+}
+.float-left {
+  margin: auto 20px auto auto;
+}
+.container {
+  width: 400px;
 }
