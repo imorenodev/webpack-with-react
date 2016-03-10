@@ -6,7 +6,8 @@ export default ({notes, onEdit}) => {
     <ol className='list-group'>
       {notes.map(note =>
       <li className='list-group-item' key={note.id}>
-        <Note task={note.task} />
+        <Note task={note.task}
+              onEdit={onEdit.bind(null, note.id)} />
       </li>)}
     </ol>
   )

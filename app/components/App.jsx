@@ -32,7 +32,7 @@ class App extends React.Component {
           <button onClick={this.addNote} className='btn btn-success btn-sm float-right'>+</button>
           <button onClick={this.removeNote} className='btn btn-danger btn-sm float-right'>-</button>
         </li>
-        <Notes notes={notes} />
+        <Notes notes={notes} onEdit={this.editNote} />
       </div>
     );
   }
@@ -44,11 +44,25 @@ class App extends React.Component {
       }])
     }, () => console.log('added a new task!'));
   };
+  editNote = (id, task) => {
+    // don't let user set task to empty string
+    if (!task.trim()) {
+      return;
+    }
+
+    const notes = this.state.notes.map(note => {
+      if (note.id === id && task) {
+        note.task = task;
+      }
+      return note;
+    });
+    this.setState({notes});
+  }
   removeNote = () => {
     this.setState({
       notes: this.state.notes.slice(0,-1)
     }, () => console.log('removed a task!'))
-  }
+  };
 }
 
 export default App;
