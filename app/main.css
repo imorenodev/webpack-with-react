@@ -1,5 +1,12 @@
 body {
   font-family: sans-serif;
-  background: gray;
-  color: white;
+  background-color: rgb(73,231,236); /*top colour*/
+  background-image: -webkit-linear-gradient(top, rgb(73,231,236), rgb(227,130,244));
+  background-image:    -moz-linear-gradient(top, rgb(73,231,236), rgb(227,130,244));
+  background-image:      -o-linear-gradient(top, rgb(73,231,236), rgb(227,130,244));
+  background-image:         linear-gradient(to bottom, rgb(73,231,236), rgb(227,130,244));
+}
+ol li.list-group-item {
+  list-style: decimal inside;
+  display: list-item;
 }
