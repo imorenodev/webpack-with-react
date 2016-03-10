@@ -4,7 +4,9 @@
   "description": "Building a Kanban App with SurviveJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/imorenodev/webpack-with-react/issues"
   },
-  "homepage": "https://github.com/imorenodev/webpack-with-react#readme"
+  "homepage": "https://github.com/imorenodev/webpack-with-react#readme",
+  "devDependencies": {
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.8.3"
+  }
 }
