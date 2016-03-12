@@ -25,3 +25,9 @@ ol li.list-group-item button {
 .container {
   width: 400px;
 }
+.note .delete-note {
+  visibility: hidden;
+}
+.note:hover .delete-note {
+  visibility: visible;
+}

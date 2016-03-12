@@ -25,6 +25,7 @@ class App extends React.Component {
     }
   }
   render() {
+    //property initializer
     const notes = this.state.notes;
     return (
       <div className='container'>
