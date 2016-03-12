@@ -1,32 +1,29 @@
-import uuid from 'node-uuid';
 import React from 'react';
-import Note from './Note.jsx';
 import Notes from './Notes.jsx';
+import NoteActions from '../actions/NoteActions';
+import NoteStore from '../stores/NoteStore';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      notes: [
-        {
-          id: uuid.v4(),
-          task: 'Learn Webpack'
-        },
-        {
-          id: uuid.v4(),
-          task: 'Make Dinner'
-        },
-        {
-          id: uuid.v4(),
-          task: 'Do Laundry'
-        }
-      ]
-    }
+    this.state = NoteStore.getState();
+  }
+  componentDidMount() {
+    NoteStore.listen(this.storeChanged);
+  }
+  componentWillUnmount() {
+    NoteStore.unlisten(this.storeChanged);
+  }
+  storeChanged = (state) => {
+    // Without a property initializer, 'this' wouldn't point to the correct
+    // context because it defaults to undefined in strict mode.
+    this.setState(state);
   }
   render() {
     //property initializer
     const notes = this.state.notes;
+
     return (
       <div className='container'>
         <li className='list-group-item active'>
@@ -40,37 +37,20 @@ class App extends React.Component {
     );
   }
   addNote = () => {
-    this.setState({
-      notes: this.state.notes.concat([{
-        id: uuid.v4(),
-        task: 'New Task'
-      }])
-    }, () => console.log('added a new task!'));
+    NoteActions.create({task: 'New Task'});
   };
   editNote = (id, task) => {
     // don't let user set task to empty string
     if (!task.trim()) {
       return;
     }
-
-    const notes = this.state.notes.map(note => {
-      if (note.id === id && task) {
-        note.task = task;
-      }
-      return note;
-    });
-    this.setState({notes});
+    NoteActions.update({id, task});
   }
   deleteNote = (id, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
 
-    this.setState({
-      // filter and return any note whose id does not match
-      // id that was passed in, deleting note which matches
-      // id from the notes array
-      notes: this.state.notes.filter(note => note.id !== id)
-    }, () => console.log('deleted a task!'));
+    NoteActions.delete(id);
   };
 }
 
